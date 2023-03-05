@@ -15,3 +15,20 @@ E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\refint\batchRen
 E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.pdb
 E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.genruntimeconfig.cache
 E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\ref\batchRenameTool.dll
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\bin\Debug\net6.0-windows\batchRenameTool.exe
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\bin\Debug\net6.0-windows\batchRenameTool.deps.json
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\bin\Debug\net6.0-windows\batchRenameTool.runtimeconfig.json
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\bin\Debug\net6.0-windows\batchRenameTool.dll
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\bin\Debug\net6.0-windows\batchRenameTool.pdb
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.vbproj.AssemblyReference.cache
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.Form1.resources
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.vbproj.GenerateResource.cache
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.AssemblyInfoInputs.cache
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.AssemblyInfo.vb
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.vbproj.CoreCompileInputs.cache
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.dll
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\refint\batchRenameTool.dll
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.pdb
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\batchRenameTool.genruntimeconfig.cache
+\\wsl.localhost\Ubuntu-20.04\home\d\repos\batch-rename-tool\obj\Debug\net6.0-windows\ref\batchRenameTool.dll
