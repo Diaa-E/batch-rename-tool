@@ -8,6 +8,7 @@
         If dialogResult = Windows.Forms.DialogResult.OK Then
 
             files = fileDialog.FileNames
+            showFiles()
 
         End If
     End Sub
@@ -41,4 +42,17 @@
         Next
 
     End Sub
+
+    Private Sub showFiles()
+
+        lstBoxFiles.Items.Clear()
+
+        For Each file In files
+
+            lstBoxFiles.Items.Add(New IO.FileInfo(file).Name)
+
+        Next
+
+    End Sub
+
 End Class
