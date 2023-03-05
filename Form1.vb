@@ -1,6 +1,7 @@
 ﻿Public Class Form1
 
     Dim files() As String
+    Dim mode As Integer = 0
     Private Sub btnSelectFiles_Click(sender As Object, e As EventArgs) Handles btnSelectFiles.Click
 
         Dim dialogResult = fileDialog.ShowDialog()
@@ -35,10 +36,20 @@
 
         Dim target = getTarget()
         Dim replacement = getReplacement()
+        Dim newName = getNewName()
 
         For Each file In files
 
-            replaceName(file, target, replacement)
+            Select Case mode
+                Case 0
+                    replaceName(file, target, replacement)
+                Case 1
+                    addToName(file, newName, True)
+                Case 2
+                    addToName(file, newName, False)
+                Case 3
+                    setNewName(file, newName)
+            End Select
 
         Next
 
@@ -109,6 +120,7 @@
 
         If rdReplace.Checked Then
 
+            mode = 0
             enableReplace()
             disableNewName()
 
@@ -152,6 +164,7 @@
 
         If rdStart.Checked Then
 
+            mode = 1
             enableNewName()
             disableReplace()
 
@@ -163,6 +176,7 @@
 
         If rdEnd.Checked Then
 
+            mode = 2
             enableNewName()
             disableReplace()
 
@@ -174,6 +188,7 @@
 
         If rdNew.Checked Then
 
+            mode = 3
             enableNewName()
             disableReplace()
 
