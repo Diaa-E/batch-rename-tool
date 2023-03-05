@@ -66,4 +66,80 @@
         txtTarget.Text = lstBoxFiles.SelectedItem.ToString
 
     End Sub
+
+    Private Sub rdReplace_CheckedChanged(sender As Object, e As EventArgs) Handles rdReplace.CheckedChanged
+
+        If rdReplace.Checked Then
+
+            enableReplace()
+            disableNewName()
+
+        End If
+
+    End Sub
+
+    Private Sub enableNewName()
+
+        txtNewName.Enabled = True
+        lblNewName.Enabled = True
+
+    End Sub
+
+    Private Sub disableNewName()
+
+        txtNewName.Enabled = False
+        lblNewName.Enabled = False
+
+    End Sub
+
+    Private Sub enableReplace()
+
+        txtTarget.Enabled = True
+        lblTarget.Enabled = True
+        txtreplacement.Enabled = True
+        lblReplacement.Enabled = True
+
+    End Sub
+
+    Private Sub disableReplace()
+
+        txtTarget.Enabled = False
+        lblTarget.Enabled = False
+        txtreplacement.Enabled = False
+        lblReplacement.Enabled = False
+
+    End Sub
+
+    Private Sub rdStart_CheckedChanged(sender As Object, e As EventArgs) Handles rdStart.CheckedChanged
+
+        If rdStart.Checked Then
+
+            enableNewName()
+            disableReplace()
+
+        End If
+
+    End Sub
+
+    Private Sub rdEnd_CheckedChanged(sender As Object, e As EventArgs) Handles rdEnd.CheckedChanged
+
+        If rdEnd.Checked Then
+
+            enableNewName()
+            disableReplace()
+
+        End If
+
+    End Sub
+
+    Private Sub rdNew_CheckedChanged(sender As Object, e As EventArgs) Handles rdNew.CheckedChanged
+
+        If rdNew.Checked Then
+
+            enableNewName()
+            disableReplace()
+
+        End If
+
+    End Sub
 End Class
