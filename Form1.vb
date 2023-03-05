@@ -25,6 +25,12 @@
 
     End Function
 
+    Private Function getNewName()
+
+        Return txtNewName.Text
+
+    End Function
+
     Private Sub btnRename_Click(sender As Object, e As EventArgs) Handles btnRename.Click
 
         Dim target = getTarget()
@@ -56,7 +62,39 @@
         Dim ioFileExt = ioFile.Extension
         Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
         ioFileName = Replace(ioFileName, target, replacement)
-        ioFileName = ioFileName & ioFileExt
+        ioFileName &= ioFileExt
+        My.Computer.FileSystem.RenameFile(file, ioFileName)
+
+    End Sub
+
+    Private Sub addToName(file As Object, newName As String, atStart As Boolean)
+
+        Dim ioFile As New IO.FileInfo(file)
+        Dim ioFileExt = ioFile.Extension
+        Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
+
+        If atStart Then
+
+            ioFileName = newName & ioFileName
+
+        Else
+
+            ioFileName = ioFileName & newName
+
+        End If
+
+        ioFileName &= ioFileExt
+        My.Computer.FileSystem.RenameFile(file, ioFileName)
+
+    End Sub
+
+    Private Sub setNewName(file As Object, newName As String)
+
+        Dim ioFile As New IO.FileInfo(file)
+        Dim ioFileExt = ioFile.Extension
+        Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
+        ioFileName = newName
+        ioFileName &= ioFileExt
         My.Computer.FileSystem.RenameFile(file, ioFileName)
 
     End Sub
