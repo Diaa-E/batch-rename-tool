@@ -32,12 +32,7 @@
 
         For Each file In files
 
-            Dim ioFile As New IO.FileInfo(file)
-            Dim ioFileExt = ioFile.Extension
-            Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
-            ioFileName = Replace(ioFileName, target, replacement)
-            ioFileName = ioFileName & ioFileExt
-            My.Computer.FileSystem.RenameFile(file, ioFileName)
+            replaceName(file, target, replacement)
 
         Next
 
@@ -52,6 +47,17 @@
             lstBoxFiles.Items.Add(New IO.FileInfo(file).Name)
 
         Next
+
+    End Sub
+
+    Private Sub replaceName(file As Object, target As String, replacement As String)
+
+        Dim ioFile As New IO.FileInfo(file)
+        Dim ioFileExt = ioFile.Extension
+        Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
+        ioFileName = Replace(ioFileName, target, replacement)
+        ioFileName = ioFileName & ioFileExt
+        My.Computer.FileSystem.RenameFile(file, ioFileName)
 
     End Sub
 
