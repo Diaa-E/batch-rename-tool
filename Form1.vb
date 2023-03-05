@@ -61,4 +61,9 @@
 
     End Sub
 
+    Private Sub lstBoxFiles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBoxFiles.SelectedIndexChanged
+
+        txtTarget.Text = lstBoxFiles.SelectedItem.ToString
+
+    End Sub
 End Class
