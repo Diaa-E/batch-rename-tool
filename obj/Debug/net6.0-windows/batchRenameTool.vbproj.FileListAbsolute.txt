@@ -1,0 +1,17 @@
+E:\VB\batch rename tool\batchRenameTool\bin\Debug\net6.0-windows\batchRenameTool.exe
+E:\VB\batch rename tool\batchRenameTool\bin\Debug\net6.0-windows\batchRenameTool.deps.json
+E:\VB\batch rename tool\batchRenameTool\bin\Debug\net6.0-windows\batchRenameTool.runtimeconfig.json
+E:\VB\batch rename tool\batchRenameTool\bin\Debug\net6.0-windows\batchRenameTool.dll
+E:\VB\batch rename tool\batchRenameTool\bin\Debug\net6.0-windows\batchRenameTool.pdb
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.vbproj.AssemblyReference.cache
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.Form1.resources
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.vbproj.GenerateResource.cache
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.GeneratedMSBuildEditorConfig.editorconfig
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.AssemblyInfoInputs.cache
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.AssemblyInfo.vb
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.vbproj.CoreCompileInputs.cache
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.dll
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\refint\batchRenameTool.dll
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.pdb
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\batchRenameTool.genruntimeconfig.cache
+E:\VB\batch rename tool\batchRenameTool\obj\Debug\net6.0-windows\ref\batchRenameTool.dll
