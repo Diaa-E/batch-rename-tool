@@ -72,6 +72,11 @@
         Dim ioFile As New IO.FileInfo(file)
         Dim ioFileExt = ioFile.Extension
         Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
+
+        If (ioFileName.IndexOf(target) = -1) Then
+            Return
+        End If
+
         ioFileName = Replace(ioFileName, target, replacement)
         ioFileName &= ioFileExt
         My.Computer.FileSystem.RenameFile(file, ioFileName)
