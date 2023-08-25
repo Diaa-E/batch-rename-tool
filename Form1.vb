@@ -75,6 +75,11 @@
 
     Private Sub replaceName(file As Object, target As String, replacement As String)
 
+        If (target.Length = 0) Then
+            MessageBox.Show("'Find' Field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
         Dim ioFile As New IO.FileInfo(file)
         Dim ioFileExt = ioFile.Extension
         Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
@@ -90,6 +95,11 @@
     End Sub
 
     Private Sub addToName(file As Object, newName As String, atStart As Boolean)
+
+        If (newName.Length = 0) Then
+            MessageBox.Show("'New Name' field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
 
         Dim ioFile As New IO.FileInfo(file)
         Dim ioFileExt = ioFile.Extension
@@ -111,6 +121,11 @@
     End Sub
 
     Private Sub setNewName(file As Object, newName As String)
+
+        If (newName.Length = 0) Then
+            MessageBox.Show("'New Name' field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
 
         Dim ioFile As New IO.FileInfo(file)
         Dim ioFileExt = ioFile.Extension
