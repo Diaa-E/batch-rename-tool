@@ -43,23 +43,33 @@
         Dim target = getTarget()
         Dim replacement = getReplacement()
         Dim newName = getNewName()
+        Dim successful As New List(Of String)
 
         For Each file In files
 
             Select Case mode
                 Case 0
-                    replaceName(file, target, replacement)
+                    successful.Add(replaceName(file, target, replacement))
                 Case 1
-                    addToName(file, newName, True)
+                    successful.Add(addToName(file, newName, True))
                 Case 2
-                    addToName(file, newName, False)
+                    successful.Add(addToName(file, newName, False))
                 Case 3
-                    setNewName(file, newName)
+                    successful.Add(setNewName(file, newName))
             End Select
 
         Next
 
+        Do While (successful.IndexOf("") > -1)
+
+            successful.Remove("")
+        Loop
+
+        Dim message = "Successfully renamed" & successful.Count & "/" & files.Length & "files:" & vbCrLf & String.Join(vbCrLf, successful.ToArray())
+        MessageBox.Show(message)
+
     End Sub
+
 
     Private Sub showFiles()
 
@@ -73,11 +83,11 @@
 
     End Sub
 
-    Private Sub replaceName(file As Object, target As String, replacement As String)
+    Private Function replaceName(file As Object, target As String, replacement As String)
 
         If (target.Length = 0) Then
             MessageBox.Show("'Find' Field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return
+            Return ""
         End If
 
         Dim ioFile As New IO.FileInfo(file)
@@ -85,20 +95,22 @@
         Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
 
         If (ioFileName.IndexOf(target) = -1) Then
-            Return
+            Return ""
         End If
 
         ioFileName = Replace(ioFileName, target, replacement)
         ioFileName &= ioFileExt
         My.Computer.FileSystem.RenameFile(file, ioFileName)
 
-    End Sub
+        Return ioFileName
 
-    Private Sub addToName(file As Object, newName As String, atStart As Boolean)
+    End Function
+
+    Private Function addToName(file As Object, newName As String, atStart As Boolean)
 
         If (newName.Length = 0) Then
             MessageBox.Show("'New Name' field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return
+            Return ""
         End If
 
         Dim ioFile As New IO.FileInfo(file)
@@ -118,13 +130,15 @@
         ioFileName &= ioFileExt
         My.Computer.FileSystem.RenameFile(file, ioFileName)
 
-    End Sub
+        Return ioFileName
 
-    Private Sub setNewName(file As Object, newName As String)
+    End Function
+
+    Private Function setNewName(file As Object, newName As String)
 
         If (newName.Length = 0) Then
             MessageBox.Show("'New Name' field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return
+            Return ""
         End If
 
         Dim ioFile As New IO.FileInfo(file)
@@ -134,7 +148,9 @@
         ioFileName &= ioFileExt
         My.Computer.FileSystem.RenameFile(file, ioFileName)
 
-    End Sub
+        Return ioFileName
+
+    End Function
 
     Private Sub lstBoxFiles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBoxFiles.SelectedIndexChanged
 
