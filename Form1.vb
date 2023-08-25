@@ -2,6 +2,7 @@
 
     Dim files() As String
     Dim mode As Integer = 0
+    Dim filesReady = False
     Private Sub btnSelectFiles_Click(sender As Object, e As EventArgs) Handles btnSelectFiles.Click
 
         Dim dialogResult = fileDialog.ShowDialog()
@@ -9,6 +10,7 @@
         If dialogResult = Windows.Forms.DialogResult.OK Then
 
             files = fileDialog.FileNames
+            filesReady = True
             showFiles()
 
         End If
@@ -33,6 +35,10 @@
     End Function
 
     Private Sub btnRename_Click(sender As Object, e As EventArgs) Handles btnRename.Click
+
+        If (Not filesReady) Then
+            Return
+        End If
 
         Dim target = getTarget()
         Dim replacement = getReplacement()
