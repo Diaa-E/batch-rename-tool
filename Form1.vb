@@ -9,6 +9,7 @@
 
         If dialogResult = Windows.Forms.DialogResult.OK Then
 
+            files.Clear()
             files.AddRange(fileDialog.FileNames)
             filesReady = True
             showFiles()
