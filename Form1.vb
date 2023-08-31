@@ -1,6 +1,6 @@
 ﻿Public Class Form1
 
-    Dim files() As String
+    Dim files As New List(Of String)
     Dim mode As Integer = 0
     Dim filesReady = False
     Private Sub btnSelectFiles_Click(sender As Object, e As EventArgs) Handles btnSelectFiles.Click
@@ -9,7 +9,7 @@
 
         If dialogResult = Windows.Forms.DialogResult.OK Then
 
-            files = fileDialog.FileNames
+            files.AddRange(fileDialog.FileNames)
             filesReady = True
             showFiles()
 
@@ -43,33 +43,55 @@
         Dim target = getTarget()
         Dim replacement = getReplacement()
         Dim newName = getNewName()
-        Dim successful As New List(Of String)
+        Dim successful = 0
+        Dim totalFiles = files.Count
+        Dim successfulFiles = New List(Of String)
 
-        For Each file In files
+        For i As Integer = 0 To totalFiles - 1
 
             Select Case mode
                 Case 0
-                    successful.Add(replaceName(file, target, replacement))
+                    If replaceName(files(i), target, replacement) Then
+                        successful += 1
+                        successfulFiles.Add(files(i))
+                    End If
                 Case 1
-                    successful.Add(addToName(file, newName, True))
+                    If addToName(files(i), newName, True) Then
+                        successful += 1
+                        successfulFiles.Add(files(i))
+                    End If
                 Case 2
-                    successful.Add(addToName(file, newName, False))
+                    If addToName(files(i), newName, False) Then
+                        successful += 1
+                        successfulFiles.Add(files(i))
+                    End If
                 Case 3
-                    successful.Add(setNewName(file, newName))
+                    If setNewName(files(i), newName) Then
+                        successful += 1
+                        successfulFiles.Add(files(i))
+                    End If
+
             End Select
 
         Next
 
-        Do While (successful.IndexOf("") > -1)
+        For Each file In successfulFiles
 
-            successful.Remove("")
-        Loop
+            files.Remove(file)
 
-        If successful.Count = 0 Then
+        Next
+
+        showFiles()
+
+        If successful = 0 Then
+
             MessageBox.Show("No matches found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
         Else
-            Dim Message As String = "Successfully renamed " & successful.Count & "/" & files.Length & " files:" & vbCrLf & String.Join(vbCrLf, successful.ToArray())
+
+            Dim Message As String = "Successfully renamed " & successful & "/" & totalFiles & " files:"
             MessageBox.Show(Message, "Successfully Renamed files", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         End If
 
     End Sub
@@ -91,7 +113,7 @@
 
         If (target.Length = 0) Then
             MessageBox.Show("'Find' Field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return ""
+            Return False
         End If
 
         Dim ioFile As New IO.FileInfo(file)
@@ -99,14 +121,14 @@
         Dim ioFileName = Replace(ioFile.Name, ioFileExt, "")
 
         If (ioFileName.IndexOf(target) = -1) Then
-            Return ""
+            Return False
         End If
 
         ioFileName = Replace(ioFileName, target, replacement)
         ioFileName &= ioFileExt
         My.Computer.FileSystem.RenameFile(file, ioFileName)
 
-        Return ioFileName
+        Return True
 
     End Function
 
@@ -114,7 +136,7 @@
 
         If (newName.Length = 0) Then
             MessageBox.Show("'New Name' field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return ""
+            Return False
         End If
 
         Dim ioFile As New IO.FileInfo(file)
@@ -134,7 +156,7 @@
         ioFileName &= ioFileExt
         My.Computer.FileSystem.RenameFile(file, ioFileName)
 
-        Return ioFileName
+        Return True
 
     End Function
 
@@ -142,7 +164,7 @@
 
         If (newName.Length = 0) Then
             MessageBox.Show("'New Name' field is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return ""
+            Return False
         End If
 
         Dim ioFile As New IO.FileInfo(file)
@@ -152,13 +174,17 @@
         ioFileName &= ioFileExt
         My.Computer.FileSystem.RenameFile(file, ioFileName)
 
-        Return ioFileName
+        Return True
 
     End Function
 
     Private Sub lstBoxFiles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBoxFiles.SelectedIndexChanged
 
-        txtTarget.Text = lstBoxFiles.SelectedItem.ToString
+        If (lstBoxFiles.SelectedItem IsNot Nothing) Then
+
+            txtTarget.Text = lstBoxFiles.SelectedItem.ToString
+
+        End If
 
     End Sub
 
