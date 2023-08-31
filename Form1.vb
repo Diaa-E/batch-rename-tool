@@ -267,4 +267,40 @@
         End If
 
     End Sub
+
+    Private Sub btnAddTemp_Click(sender As Object, e As EventArgs) Handles btnAddTemp.Click
+
+        addNewTemp(txtTemp.Text)
+        txtTemp.Clear()
+
+    End Sub
+
+    Private Sub addNewTemp(newTemp As String)
+
+        If newTemp = "" Then Return
+        lstTemps.Items.Add(newTemp)
+
+    End Sub
+
+    Private Sub removeTemp(item As Object)
+
+        lstTemps.Items.Remove(item)
+
+    End Sub
+
+    Private Sub btnRemoveTemp_Click(sender As Object, e As EventArgs) Handles btnRemoveTemp.Click
+
+        If lstTemps.SelectedItem = Nothing Then Return
+
+        removeTemp(lstTemps.SelectedItem)
+
+    End Sub
+
+    Private Sub lstTemps_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTemps.SelectedIndexChanged
+
+        If lstTemps.SelectedItem = Nothing Then Return
+
+        txtreplacement.Text = lstTemps.SelectedItem.ToString
+
+    End Sub
 End Class
