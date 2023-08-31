@@ -65,8 +65,12 @@
             successful.Remove("")
         Loop
 
-        Dim message = "Successfully renamed" & successful.Count & "/" & files.Length & "files:" & vbCrLf & String.Join(vbCrLf, successful.ToArray())
-        MessageBox.Show(message)
+        If successful.Count = 0 Then
+            MessageBox.Show("No matches found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            Dim Message As String = "Successfully renamed " & successful.Count & "/" & files.Length & " files:" & vbCrLf & String.Join(vbCrLf, successful.ToArray())
+            MessageBox.Show(Message, "Successfully Renamed files", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
 
     End Sub
 
