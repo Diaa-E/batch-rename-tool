@@ -1,6 +1,9 @@
-﻿Public Class Form1
+﻿Imports batchRenameTool.My
+
+Public Class Form1
 
     Dim files As New List(Of String)
+    Dim temps As New List(Of String)
     Dim mode As Integer = 0
     Dim filesReady = False
     Private Sub btnSelectFiles_Click(sender As Object, e As EventArgs) Handles btnSelectFiles.Click
@@ -280,12 +283,16 @@
 
         If newTemp = "" Then Return
         lstTemps.Items.Add(newTemp)
+        temps.Add(newTemp)
+        My.Settings.Templates = String.Join(",", temps)
 
     End Sub
 
-    Private Sub removeTemp(item As Object)
+    Private Sub removeTemp(item As Object, selectedIndex As Integer)
 
         lstTemps.Items.Remove(item)
+        temps.RemoveAt(selectedIndex)
+        My.Settings.Templates = String.Join(",", temps)
 
     End Sub
 
@@ -293,7 +300,7 @@
 
         If lstTemps.SelectedItem = Nothing Then Return
 
-        removeTemp(lstTemps.SelectedItem)
+        removeTemp(lstTemps.SelectedItem, lstTemps.SelectedIndex)
 
     End Sub
 
@@ -302,6 +309,20 @@
         If lstTemps.SelectedItem = Nothing Then Return
 
         txtreplacement.Text = lstTemps.SelectedItem.ToString
+
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If My.Settings.Templates IsNot "" Then
+
+            temps.AddRange(My.Settings.Templates.Split(","))
+        End If
+
+        For Each temp As String In temps
+
+            lstTemps.Items.Add(temp)
+        Next
 
     End Sub
 End Class

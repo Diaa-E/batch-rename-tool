@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         txtTarget = New TextBox()
         txtreplacement = New TextBox()
         lblTarget = New Label()
@@ -42,7 +43,9 @@ Partial Class Form1
         btnAddTemp = New Button()
         btnRemoveTemp = New Button()
         txtTemp = New TextBox()
+        BindingSource1 = New BindingSource(components)
         grpMode.SuspendLayout()
+        CType(BindingSource1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' txtTarget
@@ -291,6 +294,7 @@ Partial Class Form1
         Text = "Batch Rename Tool"
         grpMode.ResumeLayout(False)
         grpMode.PerformLayout()
+        CType(BindingSource1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -315,4 +319,5 @@ Partial Class Form1
     Friend WithEvents btnAddTemp As Button
     Friend WithEvents btnRemoveTemp As Button
     Friend WithEvents txtTemp As TextBox
+    Friend WithEvents BindingSource1 As BindingSource
 End Class
