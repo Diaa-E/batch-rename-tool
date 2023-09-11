@@ -107,7 +107,9 @@ Public Class Form1
 
         For Each file In files
 
-            lstBoxFiles.Items.Add(New IO.FileInfo(file).Name)
+            Dim fileName As String = New IO.FileInfo(file).Name
+            Dim fileExtension As String = New IO.FileInfo(file).Extension
+            lstBoxFiles.Items.Add(fileName.Replace(fileExtension, ""))
 
         Next
 
